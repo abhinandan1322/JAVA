@@ -1,0 +1,16 @@
+
+import java.util.Scanner;
+public class pattern7 {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the number of rows: ");
+        int rows = sc.nextInt();
+        int coloums = sc.nextInt();
+        for(int i=1;i<=rows;i++){
+            for(int j=coloums;j>=i;j--){
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+}
