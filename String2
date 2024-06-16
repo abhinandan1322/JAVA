@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class String3 {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the Email: ");
+        int pointer=0;
+        String Str = sc.next();
+        int size = Str.length();
+        String result="";
+        for(int i=0;i<size;i++){
+            if(Str.charAt(i)=='@'){
+                result = Str.substring(0, i);
+                pointer++;
+            }
+            
+        }
+        if(pointer==0){
+            System.out.println("Please enter a valid email.");
+
+        }
+        else{
+        System.out.println("The username from the email is: ");
+        System.out.println(result);
+        }
+    }
+}
