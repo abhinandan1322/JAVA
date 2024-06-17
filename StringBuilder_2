@@ -1,0 +1,18 @@
+import java.util.*;
+public class String5 {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the email: ");
+        String email=sc.next();
+
+        StringBuilder sb = new StringBuilder(email);
+        int size = email.length();
+        for(int i=0;i<size;i++){
+            if(sb.charAt(i)=='@'){
+                sb.delete(i, size);
+                break;
+            }
+        }
+        System.out.println("The Username is: " + sb);
+    }
+}
