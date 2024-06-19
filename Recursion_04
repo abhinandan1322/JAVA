@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class reccursion3 {
+    public static void cal_Fib(int a,int b, int n){
+        if(n==0){
+            return;
+        }
+        int c = a+b;
+        System.out.println(c);
+        cal_Fib(b, c, n-1);
+    }
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int a =0;
+        int b = 1;
+        System.out.println(a);
+        System.out.println(b);
+        int n = 7;
+        cal_Fib(a, b, n-2);
+    }
+}
