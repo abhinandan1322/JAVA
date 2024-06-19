@@ -1,0 +1,15 @@
+public class recurssionPractice {
+public class recurssionPractice {
+ public static void reccurence(int n){
+
+     if(n==0){
+         return;
+     }
+     System.out.println(n);
+     reccurence(n-1);
+ }
+     public static void main(String[] args){
+         int n =5;
+         reccurence(n);
+     }
+ }
