@@ -1,0 +1,16 @@
+class Solution {
+    
+    
+    public long leftElement(long arr[], long n)
+    {
+          Arrays.sort(arr);
+          long res=0;
+          if(n%2==0){
+              res=  arr[(int)((n/2)-1)];
+          }
+          else{
+              res = arr[(int)((n-1)/2)];
+          }
+          return res;
+    }
+}
