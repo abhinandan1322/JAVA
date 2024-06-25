@@ -1,0 +1,18 @@
+class Solution {
+
+    public static boolean isPerfect(int n, int[] arr) {
+        boolean ans = true;
+
+        // Check elements from start to middle
+        for (int i = 0; i < n / 2; i++) {
+            // Compare with corresponding element from end in reverse order
+            if (arr[i] != arr[n - (i + 1)]) {
+                ans = false;
+                break;
+            }
+        }
+
+        return ans;
+    }
+
+}
