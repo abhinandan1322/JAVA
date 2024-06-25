@@ -1,0 +1,17 @@
+class Solution {
+
+    float[] streamAvg(int[] arr, int n) {
+        // code here
+
+        int sum = 0;
+        float[] res = new float[n];
+
+        for (int i = 0; i < n; i++) {
+            sum += arr[i];
+            res[i] = (float) sum / (i + 1);
+        }
+
+        return res;
+    }
+
+}
