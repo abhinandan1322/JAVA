@@ -1,0 +1,12 @@
+class GfG {
+
+    public static void print(int arr[], int n) {
+        System.out.print(arr[0] + " ");
+        for (int i = 1; i < n; i++) {
+            if (i % 2 == 0) {
+                // Print the element only if i is even
+                System.out.print(arr[i] + " ");
+            }
+        }
+    }
+}
