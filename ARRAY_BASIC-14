@@ -35,7 +35,7 @@ class FastReader {
     }
 }
 
-class GFG {
+class ABC {
     public static void main(String args[]) throws IOException {
         FastReader sc = new FastReader();
         PrintWriter out = new PrintWriter(System.out);
