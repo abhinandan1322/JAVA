@@ -1,0 +1,77 @@
+import java.io.*;
+import java.util.*;
+
+class IntArray {
+
+    // Method to read input from BufferedReader and return an integer array
+    public static int[] input(BufferedReader br, int n) throws IOException {
+        String[] s = br.readLine().trim().split(" ");
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = Integer.parseInt(s[i]);
+        }
+        return a;
+    }
+
+    // Method to print an integer array
+    public static void print(int[] a) {
+        for (int e : a) {
+            System.out.print(e + " ");
+        }
+        System.out.println();
+    }
+
+    // Method to print an ArrayList of integers
+    public static void print(ArrayList<Integer> a) {
+        for (int e : a) {
+            System.out.print(e + " ");
+        }
+        System.out.println();
+    }
+}
+
+class Solution {
+
+    // Method to find and return duplicates from an array
+    public static ArrayList<Integer> duplicates(int[] arr) {
+        Arrays.sort(arr); // Sort the array to bring duplicates together
+        
+        ArrayList<Integer> res = new ArrayList<>();
+        int count = 0; // Initialize count variable
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] == arr[i + 1]) {
+                // Check if the duplicate is not already added
+                if (res.isEmpty() || !res.get(res.size() - 1).equals(arr[i])) {
+                    res.add(arr[i]);
+                    count++;
+                }
+            }
+        }
+
+        // If no duplicates were found, add -1 to the result
+        if (count == 0) {
+            res.add(-1);
+        }
+
+        return res;
+    }
+}
+
+class MainProgram {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(br.readLine().trim());
+
+        while (t-- > 0) {
+            int n = Integer.parseInt(br.readLine().trim());
+            int[] arr = IntArray.input(br, n);
+
+            Solution obj = new Solution();
+            ArrayList<Integer> res = obj.duplicates(arr);
+
+            IntArray.print(res);
+        }
+    }
+}
