@@ -1,0 +1,29 @@
+import java.util.LinkedList;
+
+class LinkedListExample {
+   public static void main(String args[]) {
+       LinkedList<String> list = new LinkedList<>();
+
+       // Add elements to the list
+       list.add("is");
+       list.add("a");
+       list.addLast("list");
+       list.addFirst("this");
+       list.add(3, "linked");
+
+       // Print the list
+       System.out.println(list);
+
+       // Retrieve elements from the list
+       System.out.println(list.get(0));
+       System.out.println(list.size());
+
+       // Remove elements from the list
+       list.remove(3);
+       list.removeFirst();
+       list.removeLast();
+
+       // Print the list after removals
+       System.out.println(list);
+   }
+}
