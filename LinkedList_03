@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class LL {
+    Node head;
+    public class Node{
+        int data;
+        Node next;
+
+        Node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+
+    public void add(int data){
+        Node newNode = new Node(data);
+        if(head==null){
+            head = newNode;
+            return;
+        }
+        newNode.next = head;
+        head=newNode;
+    }
+
+    public void printlist(){
+        Node curr=head;
+        while(curr != null){
+            System.out.print(curr.data + " -> ");
+            curr = curr.next;
+        }
+        System.out.print("NULL");
+        System.out.println();
+    }
+
+    public int search(int target){
+        int index=0;
+        Node curr = head;
+        while (curr != null) {
+            if(curr.data == target){
+                return index;
+            }
+            curr = curr.next;
+            index++;
+        }
+        return -1;
+    }
+public static void main(String[] args){
+    Scanner sc = new Scanner(System.in);
+    LL list = new LL();
+    list.add(3);
+    list.add(2);
+    list.add(8);
+    list.add(3);
+    list.add(7);
+    list.add(5);
+    list.add(1);
+    list.printlist();
+
+    System.out.print("Enter the element you want to search : ");
+    int target = sc.nextInt();
+    int index=list.search(target);
+    if(index != -1){
+        System.out.println("Element found at index " + index);
+    }
+    else{
+        System.out.println("Element not found");
+    }
+
+}
+    
+}
