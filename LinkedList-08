@@ -1,0 +1,63 @@
+class Node {
+    int data;
+    Node next;
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class LinkedList {
+    Node head;
+
+    public void add(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+        }
+    }
+
+    public boolean isCircular() {
+        if (head == null) {
+            return false;
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                return true; // There is a cycle
+            }
+        }
+
+        return false; // No cycle
+    }
+
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+
+        // Creating a cycle for testing
+        list.head.next.next.next.next.next = list.head.next;
+
+        if (list.isCircular()) {
+            System.out.println("The list is circular.");
+        } else {
+            System.out.println("The list is not circular.");
+        }
+    }
+}
