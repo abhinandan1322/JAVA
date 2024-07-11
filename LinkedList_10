@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class GFG {
+    public static int getNth(Node node, int index) {
+        Node current = node;
+        int count = 0;
+
+        while (current != null) {
+            if (count == index) {
+                return current.data;
+            }
+            current = current.next;
+            count++;
+        }
+
+        return -1; // If the index is out of bounds, return -1
+    }
+
+    public static Node append(Node head, int newData) {
+        Node newNode = new Node(newData);
+        if (head == null) {
+            return newNode;
+        }
+        Node last = head;
+        while (last.next != null) {
+            last = last.next;
+        }
+        last.next = newNode;
+        return head;
+    }
+
+    public static void printList(Node head) {
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Node head = null;
+        head = append(head, 1);
+        head = append(head, 2);
+        head = append(head, 3);
+        head = append(head, 4);
+        head = append(head, 5);
+
+        System.out.print("Linked List: ");
+        printList(head);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter index to get value: ");
+        int index = scanner.nextInt();
+        int value = getNth(head, index);
+        
+        if (value != -1) {
+            System.out.println("Value at index " + index + ": " + value);
+        } else {
+            System.out.println("Index " + index + " is out of bounds.");
+        }
+
+        scanner.close();
+    }
+}
