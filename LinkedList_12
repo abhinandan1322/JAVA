@@ -1,0 +1,72 @@
+public class LL {
+
+    Node head;
+
+    public class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public void add(int data) {
+        Node node = new Node(data);
+        if (head == null) {
+            head = node;
+            return;
+        }
+        Node curr = head;
+        while (curr.next != null) {
+            curr = curr.next;
+        }
+        curr.next = node;
+    }
+
+    public Node swap() {
+        Node dummy = new Node(0);
+        dummy.next = head;
+        Node point = dummy;
+
+        while (point.next != null && point.next.next != null) {
+            Node swap1 = point.next;
+            Node swap2 = point.next.next;
+
+            swap1.next = swap2.next;
+            swap2.next = swap1;
+
+            point.next = swap2;
+            point = swap1;
+        }
+        head = dummy.next;
+        return head;
+    }
+
+    public void printList() {
+        Node newNode = head;
+        while (newNode != null) {
+            System.out.print(newNode.data + " -> ");
+            newNode = newNode.next;
+        }
+        System.out.println("NULL");
+    }
+
+    public static void main(String[] args) {
+        LL list = new LL();
+
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+
+        System.out.println("Before swapping the pairs : ");
+        list.printList();
+
+        System.out.println("After swapping the pairs : ");
+        list.swap();
+        list.printList();
+    }
+}
