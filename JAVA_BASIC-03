@@ -1,0 +1,54 @@
+import java.io.*;
+import java.util.*;
+
+class GF6 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        int t = Integer.parseInt(in.readLine()); // Read the number of test cases
+
+        while (t-- > 0) {
+            int choice = Integer.parseInt(in.readLine()); // Read the choice
+            String[] a = in.readLine().trim().split("\\s+"); // Read the array elements as a string and split by whitespace
+            List<Double> arr = new ArrayList<>();
+
+            for (int i = 0; i < a.length; i++) {
+                arr.add(Double.parseDouble(a[i])); // Convert each string element to Double and add to the list
+            }
+
+            Solution ob = new Solution();
+            double result = ob.switchCase(choice, arr);
+
+            if (choice == 1) {
+                System.out.println(String.format("%.2f", result)); // Format the result to 2 decimal places
+            } else {
+                System.out.println(result);
+            }
+        }
+    }
+}
+
+// User function Template for Java
+class Solution {
+    static double switchCase(int choice, List<Double> arr) {
+        double ans = 0.0;
+
+        switch (choice) {
+            case 1:
+                // For choice 1, return result of π * first element
+                if (!arr.isEmpty()) {
+                    ans = Math.PI * arr.get(0);
+                }
+                break;
+            case 2:
+                // For choice 2, return result of second element divided by the third element
+                if (arr.size() > 1) {
+                    ans = arr.get(1) / (arr.size() > 2 ? arr.get(2) : 1.0);
+                }
+                break;
+            default:
+                ans = 0.0;
+                break;
+        }
+        return ans;
+    }
+}
