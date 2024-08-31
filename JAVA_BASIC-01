@@ -1,0 +1,47 @@
+import java.io.IOException;
+import java.util.Scanner;
+
+class GF6 {
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt(); // Number of test cases
+
+        while (T-- > 0) {
+            sc.nextLine(); // Consume the newline character
+            String s = sc.next(); // Read the input string for data type
+
+            Solution obj = new Solution();
+            int ans = obj.dataTypeSize(s); // Get the size of the data type
+
+            String character = "Character"; // Fix the capitalization for comparison
+            if (character.equals(s) && ans == 2) { // Check if data type is "Character" and size is 2
+                ans = 1;
+            }
+
+            System.out.println(ans); // Output the result
+        }
+
+        sc.close(); // Close the scanner
+    }
+}
+
+// User function Template for Java
+class Solution {
+    static int dataTypeSize(String str) {
+        // Using a switch statement to return the size of the given data type
+        switch (str) {
+            case "Character":
+                return Character.BYTES;
+            case "Integer":
+                return Integer.BYTES;
+            case "Double":
+                return Double.BYTES;
+            case "Long":
+                return Long.BYTES;
+            case "Float":
+                return Float.BYTES;
+            default:
+                return -1; // Return -1 for invalid data types
+        }
+    }
+}
