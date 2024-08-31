@@ -1,0 +1,38 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+class GFG {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int t;
+        t = Integer.parseInt(br.readLine()); // Read number of test cases
+
+        while (t-- > 0) {
+            int n, m;
+
+            // Read integers n and m
+            n = Integer.parseInt(br.readLine());
+            m = Integer.parseInt(br.readLine());
+
+            Solution obj = new Solution();
+            String res = obj.compareNM(n, m); // Call the compareNM function with n and m
+
+            System.out.println(res); // Print the result
+        }
+    }
+}
+
+// User function template for Java
+class Solution {
+    public static String compareNM(int n, int m) {
+        // Compare the two integers
+        if (n == m) {
+            return "equal";
+        } else if (n > m) {
+            return "greater";
+        } else {
+            return "lesser";
+        }
+    }
+}
