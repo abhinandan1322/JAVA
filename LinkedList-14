@@ -1,0 +1,169 @@
+public class AddTwoNumbersGUI {
+    Node head;
+    public class Node{
+        int data;
+        Node next;
+
+        Node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+
+    public void addFirst(int data){
+        Node newNode = new Node(data);
+        if(head==null){
+            head=newNode;
+            return;
+        }
+        newNode.next=head;
+        head=newNode;
+    }
+
+    public void addLast(int data){
+        Node newNode = new Node(data);
+        if(head==null){
+            head=newNode;
+            return;
+        }
+        Node currNode = head;
+        while (currNode.next != null) {
+            currNode=currNode.next;
+        }
+        currNode.next=newNode;
+    }
+
+    public void add(int data,int pos){
+        Node newNode = new Node(data);
+        if (pos<0) {
+            System.out.println("Please enter valid pos.");
+            return;
+        }
+
+        if(pos==0){
+            newNode.next=head;
+            head=newNode;
+            return;
+        }
+
+        Node currNode = head;
+        for(int i=0;i<pos-1 && currNode != null;i++){
+            currNode=currNode.next;
+        }
+
+        if(currNode == null){
+            System.out.println("Index out of bound.");
+            return;
+        }
+        newNode.next=currNode.next;
+        currNode.next=newNode;
+    }
+
+    public void deleteBeggining(){
+        if(head==null){
+            System.out.println("List is empty.");
+            return;
+        }
+        head=head.next;
+    }
+
+    public void deleteAtEnd(){
+        if(head==null){
+            System.out.println("List is empty.");
+            return;
+        }
+        Node currNode = head;
+        while (currNode.next.next != null) {
+            currNode=currNode.next;
+        }
+        currNode.next=null;
+    }
+
+    public void delete(int pos){
+        if(pos<0){
+            System.out.println("please enter a valid pos.");
+            return;
+        }
+
+        if(head==null){
+            System.out.println("List is empty.");
+            return;
+        }
+        
+        if(pos==0){
+            head=head.next;
+            return;
+        }
+        
+
+        Node currNode = head;
+        Node prevnode = null;
+
+        for(int i=0;i<pos;i++){
+            prevnode=currNode;
+            currNode=currNode.next;
+        }
+        prevnode.next=currNode.next;
+
+
+    }
+
+    public int search(int val){
+        if(head==null){
+            System.out.println("List is empty");
+            return -1;
+        }
+        int index=0;
+        Node currNode = head;
+        while (currNode != null) {
+            if(currNode.data==val)
+            {
+                return index;
+            }
+            currNode=currNode.next;
+            index++;
+        }
+
+        System.out.println("not found");
+        return -1;
+    }
+
+    public void printList(){
+        Node currNode = head;
+        if(head==null){
+            System.out.println("List is empty");
+        }
+        while (currNode != null) {
+            System.out.print(currNode.data +" -> ");
+            currNode = currNode.next;
+        }
+        System.out.println("NULL");
+    }
+    public static void main(String[] args) {
+        AddTwoNumbersGUI list = new AddTwoNumbersGUI();
+        list.addFirst(1);
+        list.addFirst(2);
+        list.addFirst(3);
+        list.addFirst(4);
+        list.printList();
+
+        // list.addLast(30);
+        // list.printList();
+
+        // list.add(5, 1);
+        // list.printList();
+
+        // list.deleteBeggining();
+        // list.printList();
+
+        // list.deleteAtEnd();
+        // list.printList();
+
+        // list.delete(2);
+        // list.printList();
+
+        int index = list.search(3);
+        System.out.println(index);      
+
+    }
+}
