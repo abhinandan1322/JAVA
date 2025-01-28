@@ -1,0 +1,87 @@
+public class comaprell {
+    public static Node head1,head2;
+    public class Node{
+        int data;
+        Node next;
+
+        public Node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+
+    public void insertAtList1(int data){
+        Node newNode = new Node(data);
+        if(head1==null){
+            head1=newNode;
+            return;
+        }
+        else{
+            newNode.next=head1;
+            head1=newNode;
+        }
+    }
+
+    public void insertAtList2(int data){
+        Node newNode = new Node(data);
+        if(head2==null){
+            head2=newNode;
+            return;
+        }
+        else{
+            newNode.next=head2;
+            head2=newNode;
+        }
+    }
+
+    public void traverse(Node head){
+        if(head==null){
+            System.out.println("List is empty.");
+        }
+        Node temp = head;
+        while (temp!=null) {
+            System.out.print(temp.data + "->");
+            temp=temp.next;
+        }
+        System.out.println("NULL");
+    }
+
+    public boolean comapareList(Node head1, Node head2){
+        if(head1==null || head2==null){
+            return true;
+        }
+
+        while (head1!=null || head2!=null) {
+            if(head1==null || head2==null){
+                return false;
+            }
+            if(head1.data!=head2.data){
+                return false;
+            }
+            head1=head1.next;
+            head2=head2.next;
+        }
+        return true;
+    }
+
+    public static void main(String[] args){
+        comaprell list = new comaprell();
+        list.insertAtList1(10);
+        list.insertAtList1(20);
+        list.insertAtList1(30);
+        list.insertAtList1(40);
+
+        // list.traverse(head1);
+
+        list.insertAtList2(10);
+        list.insertAtList2(20);
+        list.insertAtList2(30);
+        // list.insertAtList2(40);
+
+        // list.traverse(head2);
+
+        boolean comaprison = list.comapareList(head1, head2);
+        System.out.println(comaprison);
+
+    }
+}
