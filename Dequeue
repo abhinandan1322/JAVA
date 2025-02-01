@@ -1,0 +1,108 @@
+public class Dequeue {
+    public class Node{
+        int data;
+        Node next;
+        Node prev;
+        Node(int data){
+            this.data=data;
+            this.next=null;
+            this.prev=null;
+        }
+    }
+
+    public class dequeue{
+        private Node front;
+        private Node rear;
+
+        dequeue(){
+            this.front=null;
+            this.rear=null;
+        }
+
+        public void addFront(int data){
+            Node newNode = new Node(data);
+            if(front==null){
+                front=rear=newNode;
+                return;
+            }
+            else{
+                newNode.next=front;
+                front.prev=newNode;
+                front=newNode;
+            }
+        }
+
+        public void addRear(int data){
+            Node newNode = new Node(data);
+            if(rear==null){
+                rear=front=newNode;
+                return;
+            }
+            else{
+                rear.next=newNode;
+                newNode.prev=rear;
+                rear=newNode;
+            }
+        }
+
+        public void removeFront(){
+            if(front==null){
+                System.out.println("Dequeue is empty.");
+                return;
+            }
+            if(front==rear){
+                front=rear=null;
+                return;
+            }
+            else{
+                front=front.next;
+                front.prev=null;
+            }
+        }
+
+        public void removeRear(){
+            if(rear==null){
+                System.out.println("Dequeue is empty.");
+                return;
+            }
+            if(rear==front){
+                rear=front=null;
+                return;
+            }
+            else{
+                rear=rear.prev;
+                rear.next=null;
+            }
+        }
+
+        public void traverse(){
+            if(front==null){
+                System.out.println("Dequeue is empty.");
+                return;
+            }
+            Node temp = front;
+            while (temp!=null) {
+                System.out.print(temp.data + "->");
+                temp=temp.next;
+            }
+            System.out.println("NULL");
+        }
+    }
+
+    public static void main(String[] args) {
+        Dequeue.dequeue dq = new Dequeue().new dequeue();
+        dq.addFront(10);
+        dq.addFront(20);
+
+        dq.traverse();
+
+        dq.addRear(10);
+        dq.addRear(20);
+        dq.traverse();
+
+        dq.removeFront();
+        dq.removeRear();
+
+        dq.traverse();
+    }
+}
