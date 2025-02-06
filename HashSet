@@ -1,0 +1,43 @@
+import java.util.HashSet;
+import java.util.Iterator;
+
+public class hashSet {
+
+    public static void main(String[] args) {
+        HashSet<Integer> set = new HashSet<>();
+        
+        // adding elements
+        set.add(10);
+        set.add(20);
+        set.add(30);
+        set.add(40);
+        
+        // deletion
+        set.remove(30);
+
+        // fetching the size of set
+        System.out.println("The size of the set is : " + set.size());
+
+        // searching 
+        if(set.contains(10)){
+            System.out.println("Element found.");
+        }
+        if(!set.contains(15)){
+            System.out.println("element not found");
+        }
+
+        // printing all the elements
+        System.out.println(set);
+
+        // iterator
+        Iterator it = set.iterator();
+        while (it.hasNext()) {
+            System.out.print(it.next()+" ");
+        }
+
+        if(!set.isEmpty()){
+            System.out.println("Set is not empty.");
+        }
+        
+    }
+}
