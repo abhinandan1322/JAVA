@@ -1,0 +1,57 @@
+import java.util.*;
+public class HashMaps {
+    public static void main(String[] args){
+        HashMap<Integer,String> map = new HashMap<>();
+
+        // Insertion
+        map.put(1,"Abhinandan");
+        map.put(2,"Akram");
+        map.put(3,"Neyaj");
+        map.put(4,"Aditya");
+        map.put(5,"Yash");
+        map.put(6,"Dependra");
+
+        System.out.println(map);
+
+        map.remove(4); //deletion
+        
+        // searching
+        if(map.containsKey(5)){
+            System.out.println("Key is present in the map and its value is " + map.get(5));
+        }
+        else{
+            System.out.println("Key is not present in the map.");
+        }
+
+        if(map.containsValue("Akram")){
+            System.out.println("Present");
+        }
+        else{
+            System.out.println("Not present");
+        }
+
+        System.out.println(map.get(5));
+
+        // updating the value
+        map.put(1,"Abhi");
+
+        // size
+        System.out.println("The size of the map is : "+ map.size());
+
+        // Map is empty or not
+        if(map.isEmpty()){
+            System.out.println("Map is empty.");
+        }
+        else{
+            System.out.println("Map is not empty.");
+        }
+
+        // iterator
+        for(Map.Entry<Integer,String> e : map.entrySet()){
+            System.out.print(e.getKey()+ " ");
+            System.out.print(e.getValue());
+            System.out.println();
+        }
+
+    }
+}
